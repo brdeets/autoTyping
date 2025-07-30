@@ -1,0 +1,19 @@
+.text-area {
+	position: relative;
+	margin: auto;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	width: 80%;
+	max-width: 50%;
+	height: 200px;
+	padding: 5rem;
+	overflow-y: scroll;
+	background-color: #000000;
+	border-radius: 10px;
+	color: rgb(125, 205, 4);
+}
+.container {
+	font-size: 1.5rem;
+	text-align: center;
+	margin: auto;
+}
