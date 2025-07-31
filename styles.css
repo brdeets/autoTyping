@@ -17,3 +17,34 @@
 	text-align: center;
 	margin: auto;
 }
+
+datalist {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	writing-mode: vertical-lr;
+	width: 30%;
+	margin: auto;
+}
+
+option {
+	padding: 0;
+}
+
+input[type="range"] {
+	width: 30%;
+}
+
+label[for="speedDial"] {
+	position: absolute;
+	left: 30%;
+}
+
+.speed-control {
+	font-size: 1rem;
+	margin-top: 1rem;
+}
+
+.hide {
+	display: none;
+}

@@ -15,6 +15,8 @@ const textArea = document.querySelector(".text-area");
 const checkbox = document.querySelector("#checkbox");
 const resetButton = document.querySelector("#reset");
 const textInput = document.querySelector("#textInput");
+const speedDial = document.querySelector("#speedDial");
+const speedControl = document.querySelector(".speed-control");
 
 let index = 0;
 let lastIndex = 0;
@@ -38,6 +40,15 @@ document.addEventListener("keydown", (event) => {
 	}
 	showText(index);
 	index++;
+});
+
+checkbox.addEventListener("change", (event) => {
+	console.log("changed");
+	if (event.target.checked) {
+		speedControl.classList.remove("hide"); // Hide speed control when checkbox is checked
+	} else {
+		speedControl.classList.add("hide");
+	}
 });
 
 textInput.addEventListener("input", () => {
@@ -67,6 +78,11 @@ textArea.addEventListener("click", () => {
 		index = lastIndex + 1;
 		lastIndex = null;
 	}
+});
+
+speedDial.addEventListener("input", (event) => {
+	let dial = parseInt(event.target.value, 10);
+	speed = 500 - Math.pow(dial / 4.0, 2) * 5; // Adjust speed based on dial value
 });
 
 function getCharacterToRender(textIndex) {
