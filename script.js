@@ -9,7 +9,7 @@ Deeper in the forest, she found a sparkling stream.
 Mia skipped stones, watching ripples dance in the sunlight.
 As the day ended, she returned home, heart full of wonder.`;
 
-let testText = getStoryText(); // Initialize testText to an empty string
+let testText = getStoryText();
 
 const textArea = document.querySelector(".text-area");
 const checkbox = document.querySelector("#checkbox");
@@ -70,6 +70,9 @@ textArea.addEventListener("click", () => {
 });
 
 function getCharacterToRender(textIndex) {
+	if (!testText) {
+		return "";
+	} // Fallback if testText is not available
 	let char = testText.charAt(textIndex);
 	return char;
 }
@@ -91,6 +94,9 @@ function generateText() {
 }
 
 function showText(testIndex) {
+	if (!testText) {
+		testText = backupText;
+	} // Fallback if testText is not available
 	testIndex = testIndex >= testText.length ? 0 : testIndex; // Reset index if it exceeds text length
 	let char = getCharacterToRender(testIndex);
 	let addLineBreak = Math.random() < 0.1; // 10% chance to add a line break
