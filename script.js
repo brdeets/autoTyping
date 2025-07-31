@@ -70,7 +70,7 @@ textArea.addEventListener("click", () => {
 });
 
 function getCharacterToRender(textIndex) {
-	if (!testText) {
+	if (typeof testText != "string") {
 		return "";
 	} // Fallback if testText is not available
 	let char = testText.charAt(textIndex);
