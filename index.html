@@ -14,8 +14,9 @@
 		<p>Click the text area with Auto generate checked, to start rendering text.</p>
 		<label for="checkbox">Auto generate text</label>
 		<input type="checkbox" id="checkbox">
-		<div class="text-area">
-			<input type="text" id="textInput" style="visibility:hidden;">
+		<div style:"position: relative;">
+			<div class="text-area"></div>
+			<input type="text" id="textInput" style="position: absolute; top:100%; width:50%; left:25%; opacity:0%;";>
 		</div>
 		<button id="reset">Reset</button>
 	</div>
