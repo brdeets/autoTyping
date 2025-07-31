@@ -14,6 +14,7 @@ let testText = getStoryText();
 const textArea = document.querySelector(".text-area");
 const checkbox = document.querySelector("#checkbox");
 const resetButton = document.querySelector("#reset");
+const textInput = document.querySelector("#textInput");
 
 let index = 0;
 let delay = 0;
@@ -51,6 +52,7 @@ resetButton.addEventListener("click", async () => {
 });
 
 textArea.addEventListener("click", () => {
+	textInput.focus(); // Focus on the text input when clicking the text area
 	if (!checkbox.checked) {
 		return;
 	}
