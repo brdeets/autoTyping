@@ -17,13 +17,11 @@ const resetButton = document.querySelector("#reset");
 const textInput = document.querySelector("#textInput");
 
 let index = 0;
-let delay = 0;
 let lastIndex = 0;
 let timeoutIds = [];
-let animationIds = [];
 let isRunning = false;
 let text = "";
-let speed = 0; // Default speed
+let speed = 30; // Default speed
 
 document.addEventListener("keydown", (event) => {
 	if (checkbox.checked) {
@@ -42,10 +40,13 @@ document.addEventListener("keydown", (event) => {
 	index++;
 });
 
+textInput.addEventListener("input", () => {
+	textInput.value = "";
+}); // Clear input field on input
+
 resetButton.addEventListener("click", async () => {
 	text = ""; // Clear the text
 	index = 0; // Reset index
-	delay = 0; // Reset delay
 	textArea.innerHTML = text;
 	textArea.scrollTop = textArea.scrollHeight;
 	getStoryText();
@@ -57,17 +58,14 @@ textArea.addEventListener("click", () => {
 		return;
 	}
 	if (!isRunning) {
-		requestAnimationFrame(generateText);
+		generateText(); // Start generating text
 		isRunning = true;
 	} else {
 		isRunning = false;
 		timeoutIds.forEach((id) => window.clearTimeout(id));
 		timeoutIds = [];
-		animationIds.forEach((id) => window.cancelAnimationFrame(id));
-		animationIds = [];
 		index = lastIndex + 1;
 		lastIndex = null;
-		delay = 0;
 	}
 });
 
@@ -85,14 +83,13 @@ function generateText() {
 		setTimeout(
 			(testIndex) => {
 				showText(testIndex);
+				generateText();
 			},
-			delay * speed, // Adjust speed with multiplier
+			speed, // Adjust speed with multiplier
 			index
 		)
 	);
 	index++;
-	delay++;
-	animationIds.push(requestAnimationFrame(generateText));
 }
 
 function showText(testIndex) {
